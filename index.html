@@ -3,55 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mafija Online sa Botovima</title>
-    
-    <!-- ISPRAVLJENE BIBLIOTEKE: WebTorrent i Bugout moraju biti uvezene tačnim linkovima -->
-    <script src="https://jsdelivr.net"></script>
-    <script src="https://jsdelivr.net"></script>
-    
-    <!-- Povezivanje sa stilom -->
+    <title>Mafija sa Botovima</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- POČETNI EKRAN ZA UNOS IMENA -->
+    <!-- POČETNI EKRAN -->
     <div id="lobby-screen">
         <div class="lobby-box">
-            <h2>🕵️‍♂️ Dobrodošao u Mafiju 🕵️‍♀️</h2>
-            <p>Unesi svoje ime da se priključiš igri:</p>
+            <h2>🕵️‍♂️ Mafija sa Botovima 🕵️‍♀️</h2>
+            <p>Unesi svoje ime da započneš igru:</p>
             <input type="text" id="username-input" placeholder="Tvoje ime..." maxlength="15">
-            <button id="join-btn">Potvrdi i uđi</button>
+            <button id="join-btn">Započni igru</button>
         </div>
     </div>
 
-    <!-- GLAVNI EKRAN IGRE (Skriven na početku) -->
+    <!-- GLAVNI EKRAN IGRE -->
     <div id="main-game" style="display: none; flex-direction: column; height: 100vh;">
         <header>
-            <h2>🕵️‍♂️ MAFIJA ONLINE 🕵️‍♀️</h2>
-            <div id="room-link">Klikni ovde da kopiraš link za drugare</div>
+            <h2>🕵️‍♂️ MAFIJA ONLINE (LOKALNO) 🕵️‍♀️</h2>
+            <div id="status-box">Faza: Čekanje...</div>
         </header>
 
-        <div id="game-container">
-            <!-- Glavni ekran igre -->
-            <div id="game-screen">
-                <div id="status-box">Čekanje igrača da započnu igru...</div>
-                <div id="players-list"></div>
-                <button id="start-btn">ZAPOČNI IGRU (Sa botovima)</button>
+        <div id="game-container" style="display: flex; flex: 1; padding: 20px; gap: 20px;">
+            <!-- Igrači -->
+            <div id="game-screen" style="flex: 2;">
+                <div id="players-list" style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;"></div>
+                <button id="start-btn" style="display: none;">POKRENI PRVU RUNDU</button>
             </div>
 
-            <!-- Free Chat Sistem -->
-            <div id="chat-container">
-                <div id="chat-messages"></div>
-                <div id="chat-input-area">
-                    <input type="text" id="chat-input" placeholder="Napiši nešto u čet...">
+            <!-- Čet sa botovima -->
+            <div id="chat-container" style="flex: 1; display: flex; flex-direction: column; border-left: 2px solid #ccc; padding-left: 20px;">
+                <div id="chat-messages" style="flex: 1; overflow-y: auto; max-height: 70vh; margin-bottom: 10px; background: #f9f9f9; padding: 10px; border-radius: 5px;"></div>
+                <div id="chat-input-area" style="display: flex; gap: 5px;">
+                    <input type="text" id="chat-input" placeholder="Napiši nešto u čet..." style="flex: 1; padding: 5px;">
                     <button id="send-btn">Pošalji</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Povezivanje sa JavaScript fajlom (Samo jednom na dnu) -->
-    <script type="module" src="script.js"></script>
-
+    <!-- Povezivanje čistog JS fajla -->
+    <script src="script.js"></script>
 </body>
 </html>
