@@ -270,6 +270,7 @@ function botChatAction() {
 
 function getRandomAlivePlayer() {
     let alivePlayers = gameState.players.filter(p => p.alive);
+    if (alivePlayers.length === 0) return null;
     return alivePlayers[Math.floor(Math.random() * alivePlayers.length)];
 }
 
@@ -278,16 +279,32 @@ function checkGameOver() {
     let citizenCount = gameState.players.filter(p => p.role === 'Građanin' && p.alive).length;
 
     if (mafiaCount === 0) {
-        gameState.phase = "GRAĐANI_POBEDILI";
+        gameState.phase = "KRAJ - GRAĐANI SU POBEDILI! 🎉";
         broadcastState();
         updateUI();
         return true;
     }
     if (mafiaCount >= citizenCount) {
-        gameState.phase = "MAFIJA_POBEDILA";
+        gameState.phase = "KRAJ - MAFIJA JE POBEDILA! 🔴";
         broadcastState();
         updateUI();
         return true;
     }
     return false;
 }
+
+// Povezivanje funkcija sa HTML dugmićima unutar modula
+document.getElementById("join-btn").addEventListener("click", joinGame);
+document.getElementById("start-btn").addEventListener("click", startGame);
+document.getElementById("send-btn").addEventListener("click", sendMessage);
+document.getElementById("room-link").addEventListener("click", copyLink);
+
+document.getElementById("chat-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
+
+// Omogućavanje glasanja iz HTML-a
+window.voteFor = voteFor;
+

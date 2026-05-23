@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mafija Online sa Botovima</title>
-    <!-- Bugout biblioteka za besplatno umrežavanje bez servera -->
+    
+    <!-- ISPRAVLJENE BIBLIOTEKE: WebTorrent i Bugout moraju biti uvezene tačnim linkovima -->
     <script src="https://jsdelivr.net"></script>
+    <script src="https://jsdelivr.net"></script>
+    
     <!-- Povezivanje sa stilom -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,7 +20,7 @@
             <h2>🕵️‍♂️ Dobrodošao u Mafiju 🕵️‍♀️</h2>
             <p>Unesi svoje ime da se priključiš igri:</p>
             <input type="text" id="username-input" placeholder="Tvoje ime..." maxlength="15">
-            <button id="join-btn" onclick="joinGame()">Potvrdi i uđi</button>
+            <button id="join-btn">Potvrdi i uđi</button>
         </div>
     </div>
 
@@ -25,7 +28,7 @@
     <div id="main-game" style="display: none; flex-direction: column; height: 100vh;">
         <header>
             <h2>🕵️‍♂️ MAFIJA ONLINE 🕵️‍♀️</h2>
-            <div id="room-link" onclick="copyLink()">Klikni ovde da kopiraš link za drugare</div>
+            <div id="room-link">Klikni ovde da kopiraš link za drugare</div>
         </header>
 
         <div id="game-container">
@@ -33,22 +36,22 @@
             <div id="game-screen">
                 <div id="status-box">Čekanje igrača da započnu igru...</div>
                 <div id="players-list"></div>
-                <button id="start-btn" onclick="startGame()">ZAPOČNI IGRU (Sa botovima)</button>
+                <button id="start-btn">ZAPOČNI IGRU (Sa botovima)</button>
             </div>
 
             <!-- Free Chat Sistem -->
             <div id="chat-container">
                 <div id="chat-messages"></div>
                 <div id="chat-input-area">
-                    <input type="text" id="chat-input" placeholder="Napiši nešto u čet..." onkeypress="handleKeyPress(event)">
-                    <button id="send-btn" onclick="sendMessage()">Pošalji</button>
+                    <input type="text" id="chat-input" placeholder="Napiši nešto u čet...">
+                    <button id="send-btn">Pošalji</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Povezivanje sa JavaScript fajlom -->
+    <!-- Povezivanje sa JavaScript fajlom (Samo jednom na dnu) -->
     <script type="module" src="script.js"></script>
+
 </body>
 </html>
-<script src="https://jsdelivr.net"></script>
